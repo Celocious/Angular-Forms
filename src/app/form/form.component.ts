@@ -11,6 +11,7 @@ export class FormComponent implements OnInit {
   loginForm: FormGroup | any;
   show: boolean = false;
   data:any;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
 
   constructor(public fb: FormBuilder) { }
@@ -21,7 +22,7 @@ export class FormComponent implements OnInit {
       fullname:[""],
       username:["", [Validators.required, Validators.pattern('[A-Za-z]+$'), Validators.maxLength(6)]],
       password:["", [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-      email:["", [Validators.required, Validators.email]],
+      email:["", [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]],
       gender:["", [Validators.required]],
       horror:false,
       Action:false,
@@ -45,7 +46,7 @@ export class FormComponent implements OnInit {
       fullname:"Testing",
       username:"Test",
       password:"Anyfvre",
-      email:"Demo@gmail.com",
+      email:"demo@gmail.com",
       gender:"male",
       horror:true,
       Language:"Tamil",
