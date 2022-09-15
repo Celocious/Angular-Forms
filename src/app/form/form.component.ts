@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
   show: boolean = false;
   data:any;
 
+
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -21,6 +22,16 @@ export class FormComponent implements OnInit {
       username:["", [Validators.required, Validators.pattern('[A-Za-z]+$'), Validators.maxLength(6)]],
       password:["", [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
       email:["", [Validators.required, Validators.email]],
+      gender:["", [Validators.required]],
+      horror:false,
+      Action:false,
+      Romance:false,
+      ScienceFiction: false,
+      Adventure: false,
+      start:null,
+      End:null,
+      Language:["", Validators.required]
+
     })
   }
   onSubmit(){
@@ -34,7 +45,10 @@ export class FormComponent implements OnInit {
       fullname:"Testing",
       username:"Test",
       password:"Anyfvre",
-      email:"Demo@gmail.com"
+      email:"Demo@gmail.com",
+      gender:"male",
+      horror:true,
+      Language:"Tamil",
     })
   }
 
@@ -49,6 +63,10 @@ export class FormComponent implements OnInit {
   }
   get email(){
     return this.loginForm.get("email")
+  }
+
+  get gender(){
+    return this.loginForm.get("gender")
   }
 
   hide(){

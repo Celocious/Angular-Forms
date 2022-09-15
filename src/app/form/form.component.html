@@ -1,4 +1,8 @@
-<h1>{{title}}</h1>
+<h1 class="d-flex justify-content-center">{{title}}</h1>
+
+<div class="d-flex justify-content-center">
+
+
 
 <form [formGroup] = "loginForm" (ngSubmit) = "onSubmit()">
 <input type="text" placeholder="name.." formControlName="name">
@@ -33,15 +37,63 @@ This field is not valid
 </span>
 <br>
 <br>
+<mat-radio-group aria-label="Select an option" formControlName="gender">
+    <mat-radio-button value="male" >Male</mat-radio-button>
+    <mat-radio-button value="female">Female</mat-radio-button>
+    <mat-radio-button value="other">Other</mat-radio-button>
+  </mat-radio-group>
+  <br>
+<span *ngIf="gender && gender.invalid && gender.touched" style="color: red;">
+This field is not valid
+</span>
+<br>
+<br>
+<section >
+    <h3>Select Genre:</h3>
+    <p><mat-checkbox formControlName="horror">horror</mat-checkbox></p>
+    <p><mat-checkbox formControlName="Action">Action</mat-checkbox></p>
+    <p><mat-checkbox formControlName="Romance">Romance</mat-checkbox></p>
+    <p><mat-checkbox formControlName="ScienceFiction">Science Fiction</mat-checkbox></p>
+    <p><mat-checkbox formControlName="Adventure">Adventure</mat-checkbox></p>
+  </section>
+<br>
+<br>
+<mat-form-field appearance="fill" >
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" formControlName="start">
+      <input matEndDate placeholder="End date" formControlName="End">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+<br>
+<br>
+<mat-form-field appearance="fill" >
+    <mat-label>Language</mat-label>
+    <mat-select formControlName="Language">
+      <mat-option>None</mat-option>
+      <mat-option value="English">English</mat-option>
+      <mat-option value="Tamil">Tamil</mat-option>
+      <mat-option value="Telugu">Telugu</mat-option>
+      <mat-option value="Hindi">Hindi</mat-option>
+      <mat-option value="Malayalam">Malayalam</mat-option>
+    </mat-select>
+  </mat-form-field>
+<br>
+<br>
 <button [disabled] = "loginForm.invalid"  (click) = "hide()">Submit</button>
 <br>
 <br>
 <button (click) = "AutoValue()">Auto Fill form</button>
-</form>
+</form>  
 <br>
 <br>
 <br>
+
 <div *ngIf="show">
     <h3><span class="font-weight-bold h5">Form value: </span> {{data| json}}</h3>
     <h3><span class="font-weight-bold h5">Form Status: </span> {{loginForm.status}}</h3>
+</div>
+
 </div>
