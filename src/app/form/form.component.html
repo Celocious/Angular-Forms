@@ -1,1 +1,47 @@
-<p>form works!</p>
+<h1>{{title}}</h1>
+
+<form [formGroup] = "loginForm" (ngSubmit) = "onSubmit()">
+<input type="text" placeholder="name.." formControlName="name">
+<br>
+<span *ngIf="name && name.invalid && name.touched" style="color: red;">
+This field is not valid
+</span>
+<br>
+<br>
+<input type="text" placeholder="username.." formControlName="username">
+<br>
+<span *ngIf="username && username.invalid && username.touched" style="color: red;">
+This field is not valid
+</span>
+<br>
+<br>
+<input type="text" placeholder="fullname.." formControlName="fullname">
+<br>
+<br>
+<br>
+<input type="password" placeholder="password.." formControlName="password">
+<br>
+<span *ngIf="password && password.invalid && password.touched" style="color: red;">
+This field is not valid
+</span>
+<br>
+<br>
+<input type="email" placeholder="email.." formControlName="email">
+<br>
+<span *ngIf="email && email.invalid && email.touched" style="color: red;">
+This field is not valid
+</span>
+<br>
+<br>
+<button [disabled] = "loginForm.invalid"  (click) = "hide()">Submit</button>
+<br>
+<br>
+<button (click) = "AutoValue()">Auto Fill form</button>
+</form>
+<br>
+<br>
+<br>
+<div *ngIf="show">
+    <h3><span class="font-weight-bold h5">Form value: </span> {{data| json}}</h3>
+    <h3><span class="font-weight-bold h5">Form Status: </span> {{loginForm.status}}</h3>
+</div>
