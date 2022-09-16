@@ -31,7 +31,9 @@ export class FormComponent implements OnInit {
       Adventure: false,
       start:null,
       End:null,
-      Language:["", Validators.required]
+      Language:["", Validators.required],
+      date:[null, Validators.required],
+      time:["",Validators.required]
 
     })
   }
@@ -50,6 +52,8 @@ export class FormComponent implements OnInit {
       gender:"male",
       horror:true,
       Language:"Tamil",
+      date:"2022-09-27T18:30:00.000Z",
+      time:"6:00 AM",
     })
   }
 
