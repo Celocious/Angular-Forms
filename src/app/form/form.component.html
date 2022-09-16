@@ -90,6 +90,18 @@ This field is not valid
       <mat-option value="Malayalam">Malayalam</mat-option>
     </mat-select>
   </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field id="mat-form" class="input">
+    <mat-select formControlName="bank"  id='mat-select' placeholder="Branch" multiple>
+      <mat-option>
+        <ngx-mat-select-search  placeholderLabel="choose branch..."  [formControl]="myControl" ></ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let bank of filteredOptions | async" [value]="bank" >
+        {{bank}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 <br>
 <br>
 <button [disabled] = "loginForm.invalid"  (click) = "hide()">Submit</button>

@@ -1,5 +1,8 @@
+import { startWith, map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup,FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+
 
 @Component({
   selector: 'app-form',
@@ -12,6 +15,10 @@ export class FormComponent implements OnInit {
   show: boolean = false;
   data:any;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  myControl = new FormControl('');
+  options: string[] = [`Mech`, `Civil`, `Cse`, `Ece`, `EEE`, `Ite`];
+
+  filteredOptions?: Observable<string[]>;
 
 
   constructor(public fb: FormBuilder) { }
@@ -33,9 +40,14 @@ export class FormComponent implements OnInit {
       End:null,
       Language:["", Validators.required],
       date:[null, Validators.required],
-      time:["",Validators.required]
+      time:["",Validators.required],
+      bank:['',Validators.required]
 
     })
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
   }
   onSubmit(){
    console.log(this.loginForm.value)
@@ -54,9 +66,14 @@ export class FormComponent implements OnInit {
       Language:"Tamil",
       date:"2022-09-27T18:30:00.000Z",
       time:"6:00 AM",
+      bank:["Mech"],
     })
   }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
   get name(){
     return this.loginForm.get("name")
   }
