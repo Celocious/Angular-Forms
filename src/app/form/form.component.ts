@@ -13,12 +13,12 @@ export class FormComponent implements OnInit {
   title:string = "Register here";
   loginForm: FormGroup | any;
   show: boolean = false;
-  data:any;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   myControl = new FormControl('');
   options: string[] = [`Mech`, `Civil`, `Cse`, `Ece`, `EEE`, `Ite`];
 
   filteredOptions?: Observable<string[]>;
+  data:any=[];
 
 
   constructor(public fb: FormBuilder) { }
@@ -50,8 +50,10 @@ export class FormComponent implements OnInit {
     );
   }
   onSubmit(){
-   console.log(this.loginForm.value)
-   this.data = this.loginForm.value 
+
+let arrdata:any= this.loginForm.value
+
+   this.data.push(arrdata);
   }
 
   AutoValue(){

@@ -104,18 +104,45 @@ This field is not valid
   </mat-form-field>
 <br>
 <br>
-<button [disabled] = "loginForm.invalid"  (click) = "hide()">Submit</button>
+<button [disabled] = "loginForm.invalid"  (click) = "hide()" class="btn btn-success">Submit</button>
 <br>
 <br>
-<button (click) = "AutoValue()">Auto Fill form</button>
+<button type="button"  (click) = "AutoValue()" class="btn btn-primary">Auto Fill form</button>
 </form>  
 <br>
 <br>
 <br>
-
-<div *ngIf="show">
-    <h3><span class="font-weight-bold h5">Form value: </span> {{data| json}}</h3>
-    <h3><span class="font-weight-bold h5">Form Status: </span> {{loginForm.status}}</h3>
+<div class="container"  *ngIf="show">
+  <table class="table table-trapped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Fullname</th>
+        <th>UserName</th>
+        <th>password</th>
+        <th>email</th>
+        <th>Gender</th>
+        <th>Language</th>
+        <th>date</th>
+        <th>time</th>
+        <th>branchk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.name}}</td>
+        <td>{{item.fullname}}</td>
+        <td>{{item.username}}</td>
+        <td>{{item.password}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.Language}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.time}}</td>
+        <td>{{item.bank}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 </div>

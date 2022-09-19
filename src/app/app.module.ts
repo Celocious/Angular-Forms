@@ -17,11 +17,13 @@ import { FormComponent } from './form/form.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
