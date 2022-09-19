@@ -54,6 +54,8 @@ export class FormComponent implements OnInit {
 let arrdata:any= this.loginForm.value
 
    this.data.push(arrdata);
+
+   this.loginForm.reset();
   }
 
   AutoValue(){
@@ -96,4 +98,20 @@ let arrdata:any= this.loginForm.value
   hide(){
     this.show = !this.show
   }
+
+DeleteUser(i:any){
+ this.data = this.data.filter((item:any,index:number)=>{
+  return index!== i})
+}
+
+UpdateUser(item:any, i:number){
+  //  this.data.map((cont:any, index:number)=>{
+  //   if(index === i) {
+  //     item.email = cont.email
+  //   }
+  //  })
+  console.log(item);
+  
+  this.loginForm.patchValue(item);
+}
 }

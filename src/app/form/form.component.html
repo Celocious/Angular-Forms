@@ -112,7 +112,7 @@ This field is not valid
 <br>
 <br>
 <br>
-<div class="container"  *ngIf="show">
+<div class="container" >
   <table class="table table-trapped">
     <thead>
       <tr>
@@ -129,17 +129,19 @@ This field is not valid
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data">
+      <tr *ngFor="let item of data; let i=index; let o = odd; let e=even;" [ngClass] = "{odd:o, even:e}">
         <td>{{item.name}}</td>
         <td>{{item.fullname}}</td>
         <td>{{item.username}}</td>
-        <td>{{item.password}}</td>
-        <td>{{item.email}}</td>
+        <td >{{item.password}}</td>
+        <td >{{item.email}}</td>
         <td>{{item.gender}}</td>
         <td>{{item.Language}}</td>
         <td>{{item.date}}</td>
         <td>{{item.time}}</td>
         <td>{{item.bank}}</td>
+        <button type="button" class="btn btn-warning mt-2" (click) = "UpdateUser(item,i)">Edit</button>
+        <button type="button" class="btn btn-danger ml-4 mt-2" (click) = "DeleteUser(i)">Delete</button>
       </tr>
     </tbody>
   </table>
