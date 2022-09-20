@@ -19,7 +19,8 @@ export class FormComponent implements OnInit {
 
   filteredOptions?: Observable<string[]>;
   data:any=[];
-
+  index:number = 0;
+  isShow:boolean = true;
 
   constructor(public fb: FormBuilder) { }
 
@@ -52,13 +53,18 @@ export class FormComponent implements OnInit {
   onSubmit(){
 
 let arrdata:any= this.loginForm.value
-
    this.data.push(arrdata);
-
    this.loginForm.reset();
   }
 
-  AutoValue(){
+  updating(){
+    let arrdata:any= this.loginForm.value
+    this.data.splice(this.index,1,arrdata)
+    this.data[this.data.length-1].splice()
+    this.loginForm.reset();
+  }
+
+  AutoValue(){              
     this.loginForm.patchValue({
       name:"Testing",
       fullname:"Testing",
@@ -105,13 +111,7 @@ DeleteUser(i:any){
 }
 
 UpdateUser(item:any, i:number){
-  //  this.data.map((cont:any, index:number)=>{
-  //   if(index === i) {
-  //     item.email = cont.email
-  //   }
-  //  })
-  console.log(item);
-  
   this.loginForm.patchValue(item);
+  this.index = i;
 }
 }
