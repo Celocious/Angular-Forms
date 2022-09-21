@@ -127,8 +127,11 @@ This field is not valid
         <th>Gender</th>
         <th>Language</th>
         <th>date</th>
+        <th>start date</th>
+        <th>End date</th>
+        <th>days</th>
         <th>time</th>
-        <th>branchk</th>
+        <th>branch</th>
       </tr>
     </thead>
     <tbody>
@@ -139,8 +142,11 @@ This field is not valid
         <td >{{item.password}}</td>
         <td >{{item.email}}</td>
         <td>{{item.gender}}</td>
-        <td>{{item.Language}}</td>
-        <td>{{item.date}}</td>
+        <td>{{item.Language | dayConvertion:"DateFormat"}}</td>
+        <td>{{item.gender }}</td>
+        <td>{{item.start }}</td>
+        <td>{{item.End}}</td>
+        <td>{{(item | dayConvertion:"")}}</td>
         <td>{{item.time}}</td>
         <td>{{item.bank}}</td>
         <button type="button" class="btn btn-warning mt-2" (click) = "UpdateUser(item,i)">Edit</button>

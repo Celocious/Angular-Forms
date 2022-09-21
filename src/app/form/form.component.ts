@@ -20,10 +20,11 @@ export class FormComponent implements OnInit {
   filteredOptions?: Observable<string[]>;
   data:any=[];
   index:number = 0;
-  isShow:boolean = true;
+  isShow:boolean = false;
 
   constructor(public fb: FormBuilder) { }
 
+  
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       name:["",[Validators.required, Validators.pattern('[A-Za-z]+$'), Validators.minLength(4)]],
@@ -49,12 +50,34 @@ export class FormComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-  }
-  onSubmit(){
 
-let arrdata:any= this.loginForm.value
-   this.data.push(arrdata);
-   this.loginForm.reset();
+   
+  }
+
+  onSubmit(){
+    if(this.loginForm.valid)
+   {
+  if(this.data.length === 0) {
+    this.data.push(this.loginForm.value)
+    console.log(this.data)
+    this.loginForm.reset()
+  }
+  else{
+    this.data.map((item:any)=>{
+      if(item.name.indexOf(this.loginForm.value.name) === -1){
+        this.data.push(this.loginForm.value);
+        console.log(this.data)
+        this.loginForm.reset();
+      }
+      else {
+        alert("already exist")
+      }
+    })
+  }
+   }
+   else{
+    alert(`Invalid Form`)
+   }
   }
 
   updating(){
@@ -73,6 +96,8 @@ let arrdata:any= this.loginForm.value
       email:"demo@gmail.com",
       gender:"male",
       horror:true,
+      start:"Wed Oct 26 2022 00:00:00 GMT+0530 (India Standard Time)",
+      End:"Thu Sep 22 2022 00:00:00 GMT+0530 (India Standard Time)",
       Language:"Tamil",
       date:"2022-09-27T18:30:00.000Z",
       time:"6:00 AM",
