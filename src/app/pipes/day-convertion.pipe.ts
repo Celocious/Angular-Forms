@@ -13,13 +13,19 @@ switch (args) {
 
   case "DateFormat":
     return `${value}`;
+    
+  case "Days":
+    const day = value.End.getTime() - value.start.getTime()
+    console.log(day)
+    const y = (day)/(1000 * 3600 * 24)
+    return y;
 
   default:
     const Time = value.End.getTime() - value.start.getTime()
     console.log(Time)
     const x = (Time)/(1000 * 3600 * 24)
-    return `years:${Math.floor(x/365)}, months:${Math.floor(x % 365 / 30)},
-    weeks:${Math.floor(x % 365 % 30 / 7)}, days:${Math.floor(x % 365 % 30 % 7)}`
+    return `${Math.floor(x/365)} year(s), ${Math.floor(x % 365 / 30.5)} month(s),
+    ${Math.floor(x % 365 % 30 / 7)} week(s), ${Math.floor(x % 365 % 30 % 7)} day(s)`
 }
 
   }

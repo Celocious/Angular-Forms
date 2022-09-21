@@ -130,6 +130,7 @@ This field is not valid
         <th>start date</th>
         <th>End date</th>
         <th>days</th>
+        <th>day</th>
         <th>time</th>
         <th>branch</th>
       </tr>
@@ -147,6 +148,7 @@ This field is not valid
         <td>{{item.start }}</td>
         <td>{{item.End}}</td>
         <td>{{(item | dayConvertion:"")}}</td>
+        <td>{{item | dayConvertion:"Days"}}</td>
         <td>{{item.time}}</td>
         <td>{{item.bank}}</td>
         <button type="button" class="btn btn-warning mt-2" (click) = "UpdateUser(item,i)">Edit</button>
