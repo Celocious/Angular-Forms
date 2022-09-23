@@ -1,0 +1,6 @@
+<h2>Upload image</h2>
+<img *ngFor="let url of urls" [src]="url" title = "Picture" /> 
+
+    <input type="file" multiple id="img" style="display:none" (change) = "onSelect($event)" >
+    <br>
+    <label for="img" class="ml-4 mt-4">upload image</label>

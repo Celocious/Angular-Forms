@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { TableComponent } from './table/table.component';
 import { DayConvertionPipe } from './pipes/day-convertion.pipe';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DayConvertionPipe } from './pipes/day-convertion.pipe';
     FormComponent,
     TableComponent,
     DayConvertionPipe,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
