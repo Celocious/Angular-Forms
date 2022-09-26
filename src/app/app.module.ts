@@ -20,6 +20,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { TableComponent } from './table/table.component';
 import { DayConvertionPipe } from './pipes/day-convertion.pipe';
 import { UploadComponent } from './upload/upload.component';
+import { MultiplelinkComponent } from './multiplelink/multiplelink.component';
+import { ImagenameComponent } from './imagename/imagename.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { UploadComponent } from './upload/upload.component';
     TableComponent,
     DayConvertionPipe,
     UploadComponent,
+    MultiplelinkComponent,
+    ImagenameComponent,
   ],
   imports: [
     BrowserModule,

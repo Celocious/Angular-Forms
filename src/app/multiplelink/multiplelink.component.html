@@ -1,0 +1,20 @@
+
+<input
+  style="display: none"
+  #attachments
+  type="file"
+  (change)="onFileChanged($event)"
+  #fileInput
+  multiple="true"
+/>
+
+<div *ngFor="let selected of listOfFiles; let index = index">
+  <h3>{{ selected }}</h3>
+  <button mat-icon-button (click)="removeSelectedFile(index)" class="btn btn-danger">delete</button>
+  <button (click)="previewIMG(selected,index)" class="ml-4 btn btn-primary">Preview</button>
+</div>
+<button (click)="fileInput.click()" class="btn btn-success mt-4">Select File</button>
+
+<div>
+    <img  [src]="previewimg" class="mt-4">
+  </div>
