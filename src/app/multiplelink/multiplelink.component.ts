@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-multiplelink',
@@ -16,8 +17,9 @@ export class MultiplelinkComponent implements OnInit {
   fileList: File[] = [];
   listOfFiles: any[] = [];
   previewimg: any;
+  x:any = "";
 
-  constructor() {}
+  constructor(public sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {}
   onFileChanged(event: any) {
@@ -37,10 +39,18 @@ export class MultiplelinkComponent implements OnInit {
   previewIMG(data: any,index:any) { 
     let previewimg = this.fileList[index];
     //Show image preview
+    let data1= URL.createObjectURL(previewimg);
+    //let data= event.target.result;
+
+     this.x = this.sanitizer.bypassSecurityTrustUrl(data1);
     let reader = new FileReader();
 
     reader.onload = (event: any) => {
       this.previewimg = event.target.result;
+     
+      console.log(this.x)
+      console.log(event.target.result)
+      
     };
     reader.readAsDataURL(previewimg);
   }
